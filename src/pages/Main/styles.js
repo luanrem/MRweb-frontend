@@ -4,12 +4,16 @@ import Goodtimes from '../../assets/fonts/goodtimesrg.ttf';
 
 export const Header = styled.header`
     position: fixed;
-    top: 10px;
+    top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+    height: 50px;
 
     margin: 0 auto;
+    transition: 0.5s;
+    background: ${props => props.headerBackground == true ? "white" : "transparent"};
+    box-shadow: ${props => props.headerBackground == true ? "0 1px 3px black" : "none"};
 
   .outer {
   display: flex;
@@ -24,7 +28,7 @@ export const Header = styled.header`
     }
 
     Button {
-      color: white;
+      color: ${props => props.headerBackground == true ? "black" : "white"};
       margin-right: 20px
     }
   }
@@ -34,7 +38,8 @@ export const Titulo = styled.h1`
   list-style: none;
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
+  transition: 0.3s;
+  color: ${props => props.headerBackground == true ? "black" : "white"};
 
   li {
     display: inline-block;
@@ -47,7 +52,7 @@ export const Titulo = styled.h1`
     display: block;
     width: 0;
     height: 2px;
-    background: #fff;
+    background: ${props => props.headerBackground == true ? "black" : "white"};
     transition: width .4s;
   }
 
