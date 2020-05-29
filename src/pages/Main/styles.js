@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import Goodtimes from '../../assets/fonts/goodtimesrg.ttf';
 
+
 export const Header = styled.header`
     position: fixed;
     top: 0;
@@ -22,24 +23,33 @@ export const Header = styled.header`
   max-width: 2000;
 
     .home {
-      color: white;
-      text-decoration: none;
       padding-left: 20px;
+
+      a {
+        text-decoration: none;
+        color: ${props => props.headerBackground == true ? "black" : "white"};
+      }
     }
 
     Button {
       color: ${props => props.headerBackground == true ? "black" : "white"};
-      margin-right: 20px
+      margin-right: 20px;
+      margin-left: 0;
+    }
+    .Cadastrar{
+      margin-right: 10px;
     }
   }
 `;
 
-export const Titulo = styled.h1`
+export const Menus = styled.h1`
   list-style: none;
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: 0.3s;
   color: ${props => props.headerBackground == true ? "black" : "white"};
+
+  margin-left: 100px;
 
   li {
     display: inline-block;

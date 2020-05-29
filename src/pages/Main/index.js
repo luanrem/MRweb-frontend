@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import { Header, Titulo, Banner, ContentOne, ContentTwo } from './styles';
+import { Header, Menus, Banner, ContentOne, ContentTwo } from './styles';
 
-import {RiHome2Line  } from 'react-icons/ri';
+import {RiHome2Line } from 'react-icons/ri';
 
 import banner from '../../assets/pictures/universe-banner.jpg';
 import banner2 from '../../assets/pictures/universe-banner2.jpg'
@@ -22,6 +22,11 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     display: 'none',
+  },
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
   },
 }));
 
@@ -46,17 +51,23 @@ export default function Main() {
             <a href="#"><RiHome2Line size={26} /></a>
           </div>
 
-          <Titulo headerBackground={hbackground}>
+          <Menus headerBackground={hbackground}>
             <li><a>Quem somos nós</a></li>
-            <li><a>Como Participar</a></li>
             <li><a>Nossa Meta</a></li>
+            <li><a>Como Participar</a></li>
             <li><a>Galeria de atividades</a></li>
             <li><a>Contato</a></li>
-          </Titulo>
+          </Menus>
 
-          <Button variant="outlined" color="inherit" className={classes.button}>
-            Entrar
-          </Button>
+          <div className="buttons">
+            <Button className="Cadastrar">
+              Cadastrar
+            </Button>
+
+            <Button variant="outlined" color="inherit" className={classes.button}>
+              Entrar
+            </Button>
+          </div>
 
         </div>
       </Header>
