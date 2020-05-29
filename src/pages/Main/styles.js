@@ -56,6 +56,10 @@ export const Menus = styled.h1`
     padding: 0px 20px;
     cursor: pointer;
   }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
 
   li a::after {
     content: '';
@@ -112,7 +116,7 @@ export const ContentOne = styled.div`
   max-width: 2000px;
 
 
-  #QuemSomosNos {
+  .QuemSomosNos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -209,10 +213,10 @@ export const ContentTwo = styled.div`
     .quadro {
 
       ul {
-        list-style-type: circle;
+        list-style-type: none;
       }
       li {
-          width: 800px;
+          width: 600px;
           margin-left: 15px;
           font-size: 20px;
           line-height: 1.5;
@@ -225,8 +229,21 @@ export const ContentTwo = styled.div`
 
         padding-top: 10px;
       }
+    }
+  }
 
+
+    #imagemETexto {
+      display: flex;
+      align-items: center;
+
+
+      img {
+        width: auto;
+        height: 450px;
+        margin-right: 20px;
+        border-radius: 10px;
+      }
     }
 
-  }
 `;
