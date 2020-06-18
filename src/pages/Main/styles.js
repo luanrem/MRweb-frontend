@@ -10,6 +10,7 @@ export const Header = styled.header`
     bottom: 0;
     right: 0;
     height: 50px;
+    z-index: 1;
 
     margin: 0 auto;
     transition: 0.5s;
@@ -79,7 +80,7 @@ export const Menus = styled.h1`
 export const Banner = styled.div`
   background-image: url(${props => props.img});
 
-  height: 400px;
+  height: ${props => props.contact == true ? "700px" : "400px"};
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -107,6 +108,52 @@ export const Banner = styled.div`
     color: white;
   }
 
+  .contatoContent {
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 10px;
+
+
+    h1 {
+      font-size: 30px;
+      color: black;
+      padding: 20px 100px;
+      margin: 0 auto;
+    }
+
+    hr {
+      display: block;
+      height: 4px;
+      border-width: 0;
+      color: #eee;
+      background-color: rgba(199,199,199,1);
+      width: 650px;
+      margin: 0 auto;
+
+      max-width: 50px;
+      margin-top: 25px;
+      margin-bottom: 1px;
+    }
+
+    .formsContent {
+      display: flex;
+      flex-direction: column;
+      padding: 0px 40px;
+
+      #Mensagem {
+        padding: 15px 0 5px 0;
+      }
+    }
+
+    .enviar {
+      display: flex;
+      justify-content: flex-end;
+
+      margin: 0;
+      padding: 0 40px 20px;
+    }
+  }
 
 `;
 
@@ -160,7 +207,6 @@ export const ContentOne = styled.div`
         width: 300px;
       }
     }
-
   }
 `;
 
@@ -216,7 +262,7 @@ export const ContentTwo = styled.div`
         list-style-type: none;
       }
       li {
-          width: 600px;
+          width: 800px;
           margin-left: 15px;
           font-size: 20px;
           line-height: 1.5;
@@ -246,4 +292,62 @@ export const ContentTwo = styled.div`
       }
     }
 
+
 `;
+
+export const ContentThree = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  height: 700px;
+  max-width: 2000px;
+
+  padding: 50px 20px;
+
+  .galeriaAtividades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    h1 {
+      font-size: 30px;
+      padding-top: 40px;
+    }
+  }
+
+  hr {
+      display: block;
+      height: 4px;
+      border-width: 0;
+      color: #eee;
+      background-color: rgba(199,199,199,1);
+      width: 650px;
+
+      max-width: 50px;
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+`
+
+export const Footer = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  height: 30px;
+  max-width: 2000px;
+
+  padding: 50px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .iconsLinked {
+    padding: 20px 0;
+    a {
+        text-decoration: none;
+        color: #222;
+        margin: 15px;
+      }
+  }
+`
