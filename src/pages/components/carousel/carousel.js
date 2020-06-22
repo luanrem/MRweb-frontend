@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css'
 
-import { Container, Button, Photo, Thumb } from './styles';
+import { Container, Photo, Thumb } from './styles';
 
 
 import photo1 from '../../../assets/pictures/CarouselPhotos/1.JPG';
@@ -70,7 +70,7 @@ class Gallery extends Component {
   renderThumbs = () =>
     <Thumb>
       {this.state.items.map((item, i) =>
-      <li key={i} onClick={() => this.slideTo(i)}> <img src={item} width="100"/></li>)}
+      <li key={i} onClick={() => this.slideTo(i)}> <img src={item}/></li>)}
     </Thumb>;
 
   renderGallery() {

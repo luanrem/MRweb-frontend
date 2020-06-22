@@ -14,8 +14,8 @@ export const Header = styled.header`
 
     margin: 0 auto;
     transition: 0.5s;
-    background: ${props => props.headerBackground == true ? "white" : "transparent"};
-    box-shadow: ${props => props.headerBackground == true ? "0 1px 3px black" : "none"};
+    background: ${props => props.headerBackground === true ? "white" : "transparent"};
+    box-shadow: ${props => props.headerBackground === true ? "0 1px 3px black" : "none"};
 
   .outer {
   display: flex;
@@ -28,12 +28,12 @@ export const Header = styled.header`
 
       a {
         text-decoration: none;
-        color: ${props => props.headerBackground == true ? "black" : "white"};
+        color: ${props => props.headerBackground === true ? "black" : "white"};
       }
     }
 
     Button {
-      color: ${props => props.headerBackground == true ? "black" : "white"};
+      color: ${props => props.headerBackground === true ? "black" : "white"};
       margin-right: 20px;
       margin-left: 0;
     }
@@ -48,7 +48,7 @@ export const Menus = styled.h1`
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: 0.3s;
-  color: ${props => props.headerBackground == true ? "black" : "white"};
+  color: ${props => props.headerBackground === true ? "black" : "white"};
 
   margin-left: 100px;
 
@@ -67,7 +67,7 @@ export const Menus = styled.h1`
     display: block;
     width: 0;
     height: 2px;
-    background: ${props => props.headerBackground == true ? "black" : "white"};
+    background: ${props => props.headerBackground === true ? "black" : "white"};
     transition: width .4s;
   }
 
@@ -80,7 +80,7 @@ export const Menus = styled.h1`
 export const Banner = styled.div`
   background-image: url(${props => props.img});
 
-  height: ${props => props.contact == true ? "700px" : "400px"};
+  height: ${props => props.contact === true ? "700px" : "400px"};
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
