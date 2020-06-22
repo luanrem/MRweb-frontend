@@ -175,7 +175,7 @@ export default function Main() {
             <div className="texto">
 
               <div className="quadros">
-                <div className="quadro">
+                <div className="quadro quadroParticipar">
                   <ul>
                     <li>Inicialmente, faz-se necessário ler o livro: "Os Semeadores de Vida" de C.R.P.Wells.</li>
                     <li>Esse livro contêm um importante histórico de nosso trabalho que se iniciou através do contato dos Seres Extra-terrestres com a família deste autor, e que,depois, se diversificou pelo mundo com grupos utilizando metodologias de trabalho diferentes, mas com o mesmo objetivo. Através desta leitura, você poderá ou não se identificar com o objetivo a ser alcançado. Por este motivo, a leitura se torna fundamental!</li>

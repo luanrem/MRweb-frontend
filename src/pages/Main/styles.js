@@ -290,6 +290,10 @@ export const ContentTwo = styled.div`
         margin-right: 20px;
         border-radius: 10px;
       }
+
+      .quadroParticipar li{
+        width: 500px;
+      }
     }
 
 
