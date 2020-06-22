@@ -58,7 +58,7 @@ export default function Main() {
         <div className="outer">
 
           <div className="home">
-            <a href="#"><RiHome2Line size={26} /></a>
+            <a href="#banner-top"><RiHome2Line size={26} /></a>
           </div>
 
           <Menus headerBackground={hbackground}>
@@ -98,7 +98,7 @@ export default function Main() {
           <hr />
 
           <div className="content">
-            <img src={logo} />
+            <img src={logo} alt="logoImage" />
             <p>Somos um grupo de pessoas que dedica suas vidas a realizar um Programa de Treinamento para que nos tornemos Cidadãos Cósmicos, aperfeiçoando-nos a cada dia, para conquistarmos a internalização da Ética Universal</p>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function Main() {
 
           <div id="imagemETexto">
 
-              <img src={comoParticiparFoto} />
+              <img src={comoParticiparFoto} alt="ComoParticiparFoto"/>
 
             <div className="texto">
 

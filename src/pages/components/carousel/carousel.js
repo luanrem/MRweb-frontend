@@ -70,7 +70,7 @@ class Gallery extends Component {
   renderThumbs = () =>
     <Thumb>
       {this.state.items.map((item, i) =>
-      <li key={i} onClick={() => this.slideTo(i)}> <img src={item}/></li>)}
+      <li key={i} onClick={() => this.slideTo(i)}> <img src={item} alt="Item"/></li>)}
     </Thumb>;
 
   renderGallery() {
@@ -92,6 +92,7 @@ class Gallery extends Component {
       { items.map((item, i) => <div key={i} className="carouselFotos">
         <img src={ item }
         height="350"
+        alt="CrouselPhotos"
           >
         </img></div>) }
     </AliceCarousel>);
