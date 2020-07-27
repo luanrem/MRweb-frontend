@@ -1,17 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
+import Drawer from "@material-ui/core/Drawer";
+import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider'
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import Gallery from '../../components/carousel/carousel';
 
-import { Header, Menus, Banner, ContentOne, ContentTwo, ContentThree, Footer } from './styles';
+import { Header, Menus, MenuListItem, Banner, ContentOne, ContentTwo, ContentThree, Footer } from './styles';
 
 import { RiHome2Line } from 'react-icons/ri';
 import { FaFacebookSquare, FaYoutube, FaInstagram } from 'react-icons/fa';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import banner from '../../assets/pictures/universe-banner.jpg';
 import banner2 from '../../assets/pictures/universe-banner2.jpg'
@@ -28,14 +38,22 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
+  list: {
+    "text-decoration": 'none',
+    color: 'inherit',
+  },
   root: {
     '& > *': {
       margin: theme.spacing(1),
     },
-  textField: {
+    textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       marginTop: 30,
+    },
+    drawer: {
+      width: 250,
+      flexShrink: 0,
     },
   },
 }));
@@ -43,8 +61,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Main() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
   const [hbackground, setHbackground] = useState(0);
+
+  const menuItems = ['Quem somos nós', 'Nossa Meta', 'Como Participar', 'Galeria de atividades', 'Contato']
+  const menuRef = ['#QuemSomosNosC', '#NossaMeta', '#ComoParticipar', '#GaleriaDeAtividades', '#Contato']
 
   useEffect(() => {
     window.onscroll = () => {
@@ -52,35 +74,103 @@ export default function Main() {
     }
   }, [])
 
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+
   return (
     <>
-      <Header headerBackground={hbackground}>
-        <div className="outer">
 
-          <div className="home">
-            <a href="#banner-top"><RiHome2Line size={26} /></a>
+      {/* -----------------------HEADER---------------------- */}
+
+      <Hidden mdDown>
+        <Header headerBackground={hbackground}>
+          <div className="outer">
+
+            <div className="home">
+              <a href="#banner-top"><RiHome2Line size={26} /></a>
+            </div>
+
+            <Menus headerBackground={hbackground}>
+              <li><a href="#QuemSomosNosC">Quem somos nós</a></li>
+              <li><a href="#NossaMeta">Nossa Meta</a></li>
+              <li><a href="#ComoParticipar">Como Participar</a></li>
+              <li><a href="#GaleriaDeAtividades">Galeria de atividades</a></li>
+              <li><a href="#Contato">Contato</a></li>
+            </Menus>
+
+            <div className="buttons">
+              <Link to="/register">
+                <Button className="Cadastrar">
+                  Cadastrar
+              </Button>
+              </Link>
+
+              <Link to="/login">
+                <Button variant="outlined" color="inherit" className={classes.button}>
+                  Entrar
+              </Button>
+              </Link>
+            </div>
+
+          </div>
+        </Header>
+      </Hidden>
+
+      <Hidden lgUp>
+        <Header headerBackground={hbackground}>
+          <div className="outer smallMenu">
+
+            <div className="home smallIcon">
+              <IconButton>
+                <a href="#banner-top"><RiHome2Line size={30} /></a>
+              </IconButton>
+            </div>
+
+
+            <div className="home smallIcon">
+              <IconButton onClick={handleDrawerOpen} >
+                <MenuIcon size={30} />
+              </IconButton>
+            </div>
+
+          </div>
+        </Header>
+
+        <Drawer
+          className={classes.drawer}
+          variant="persistent"
+          anchor="right"
+          open={open}
+        >
+          <div>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronRightIcon />
+            </IconButton>
+
+            <Divider />
+
+            <List className={classes.list}>
+              {menuItems.map((text, index) => (
+                <ListItem button key={text}>
+                  <MenuListItem className="list"
+                  href={menuRef[index]}>
+                    <ListItemText primary={text} />
+                  </MenuListItem>
+                </ListItem>
+              ))}
+            </List>
+
+
           </div>
 
-          <Menus headerBackground={hbackground}>
-          <li><a href="#QuemSomosNosC">Quem somos nós</a></li>
-            <li><a href="#NossaMeta">Nossa Meta</a></li>
-            <li><a href="#ComoParticipar">Como Participar</a></li>
-            <li><a href="#GaleriaDeAtividades">Galeria de atividades</a></li>
-            <li><a href="#Contato">Contato</a></li>
-          </Menus>
-
-          <div className="buttons">
-            <Button className="Cadastrar">
-              Cadastrar
-            </Button>
-
-            <Button variant="outlined" color="inherit" className={classes.button}>
-              Entrar
-            </Button>
-          </div>
-
-        </div>
-      </Header>
+        </Drawer>
+      </Hidden>
 
       <Banner id="banner-top" img={banner} br>
         <h1 className="nomeSite">Missão Rama Brasil</h1>
@@ -88,7 +178,7 @@ export default function Main() {
       </ Banner>
 
 
-{/* -----------------------QUEM SOMOS NÓS---------------------- */}
+      {/* -----------------------QUEM SOMOS NÓS---------------------- */}
 
       <ContentOne id="QuemSomosNosC">
 
@@ -107,7 +197,7 @@ export default function Main() {
       <Banner img={banner2} />
 
 
-{/* -----------------------NOSSA META---------------------- */}
+      {/* -----------------------NOSSA META---------------------- */}
 
 
       <ContentTwo id="NossaMeta">
@@ -157,7 +247,7 @@ export default function Main() {
       <Banner img={banner3} />
 
 
-{/* -----------------------COMO PARTICIPAR---------------------- */}
+      {/* -----------------------COMO PARTICIPAR---------------------- */}
 
 
       <ContentTwo id="ComoParticipar">
@@ -170,7 +260,7 @@ export default function Main() {
 
           <div id="imagemETexto">
 
-              <img src={comoParticiparFoto} alt="ComoParticiparFoto"/>
+            <img src={comoParticiparFoto} alt="ComoParticiparFoto" />
 
             <div className="texto">
 
@@ -198,24 +288,24 @@ export default function Main() {
       <Banner img={banner4} />
 
 
-{/* -----------------------GALERIA DE ATIVIDADES---------------------- */}
+      {/* -----------------------GALERIA DE ATIVIDADES---------------------- */}
 
 
       <ContentThree id="GaleriaDeAtividades">
 
-      <div className="galeriaAtividades">
+        <div className="galeriaAtividades">
 
-        <h1>Galeria de atividades</h1>
+          <h1>Galeria de atividades</h1>
 
-        <hr />
+          <hr />
 
-            <Gallery />
+          <Gallery />
 
-      </div>
+        </div>
       </ContentThree>
 
 
- {/* -----------------------CONTATO---------------------- */}
+      {/* -----------------------CONTATO---------------------- */}
 
       <Banner img={banner5} contact={true} id="Contato" >
         <div className="contatoContent">
@@ -226,25 +316,27 @@ export default function Main() {
           <form className={classes.root} noValidate autoComplete="off">
             <div className="formsContent">
               <TextField id="Name"
-                          margin="normal"
-                          size="Small"
-                          label="Nome"
-                          required
-                          fullWidth
-                          />
+                margin="normal"
+                size="Small"
+                label="Nome"
+                required
+                fullWidth
+              />
               <TextField id="Email" label="E-mail" />
               <TextField id="whatsapp" label="WhatsApp"
-                  required
-                  style={{ marginTop: 7}} />
+                required
+                style={{ marginTop: 7 }} />
 
-                <TextField id="Mensagem" label="Mensagem"
-                  variant="outlined"
-                  multiline
-                  rows={5}
-                  rowsMax={5}
-                  style={{ marginTop: 30,
-                            marginBottom: 20 }}
-                  />
+              <TextField id="Mensagem" label="Mensagem"
+                variant="outlined"
+                multiline
+                rows={5}
+                rowsMax={5}
+                style={{
+                  marginTop: 30,
+                  marginBottom: 20
+                }}
+              />
             </div>
 
             <div className="enviar">
@@ -262,16 +354,16 @@ export default function Main() {
 
         <div className="iconsLinked">
           <a className="social-padding"
-              href="https://www.facebook.com/ramabrasil">
-                <FaFacebookSquare size={40} />
+            href="https://www.facebook.com/ramabrasil">
+            <FaFacebookSquare size={40} />
           </a>
           <a className="social-padding"
-              href="https://www.youtube.com/channel/UChCB5Kj0wvr-KgmtLUHwhTw">
-                <FaYoutube size={40} />
+            href="https://www.youtube.com/channel/UChCB5Kj0wvr-KgmtLUHwhTw">
+            <FaYoutube size={40} />
           </a>
           <a className="social-padding"
-              href="https://www.instagram.com/missaorama">
-                <FaInstagram size={40} />
+            href="https://www.instagram.com/missaorama">
+            <FaInstagram size={40} />
           </a>
         </div>
 

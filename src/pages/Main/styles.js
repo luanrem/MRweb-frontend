@@ -21,10 +21,12 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-content: center;
   max-width: 2000;
+  height: 100%;
 
     .home {
-      padding-left: 20px;
+      padding: 0 20px;
 
       a {
         text-decoration: none;
@@ -32,10 +34,16 @@ export const Header = styled.header`
       }
     }
 
+    .smallIcon {
+      padding: 0 50px;
+    }
+
+
     Button {
       color: ${props => props.headerBackground === true ? "black" : "white"};
       margin-right: 20px;
       margin-left: 0;
+      text-decoration: inherit;
     }
     .Cadastrar{
       margin-right: 10px;
@@ -355,3 +363,9 @@ export const Footer = styled.div`
       }
   }
 `
+
+export const MenuListItem = styled.a`
+    text-decoration: none;
+    color: inherit;
+    padding: 0 25px;
+`;
