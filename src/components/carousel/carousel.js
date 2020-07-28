@@ -87,14 +87,13 @@ class Gallery extends Component {
       swipeDisabled={false}
       touchTrackingEnabled={true}
       mouseTrackingEnabled={true}
-      autoHeight={true}
+      autoHeight={false}
     >
-      { items.map((item, i) => <div key={i} className="carouselFotos">
+      { items.map((item, i) =>
         <img src={ item }
-        height="350"
         alt="CrouselPhotos"
           >
-        </img></div>) }
+        </img>) }
     </AliceCarousel>);
   }
 

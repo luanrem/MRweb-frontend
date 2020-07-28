@@ -13,10 +13,20 @@ import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Grid from '@material-ui/core/Grid';
 
 import Gallery from '../../components/carousel/carousel';
 
-import { Header, Menus, MenuListItem, Banner, ContentOne, ContentTwo, ContentThree, Footer } from './styles';
+import { Header,
+          Menus,
+          MenuListItem,
+          Banner,
+          QuemSomosNosContent,
+          NossaMetaContent,
+          ComoParticiparContent,
+          GaleriaAtividadesContent,
+          Footer
+        } from './styles';
 
 import { RiHome2Line } from 'react-icons/ri';
 import { FaFacebookSquare, FaYoutube, FaInstagram } from 'react-icons/fa';
@@ -52,7 +62,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: 30,
     },
     drawer: {
-      width: 250,
+      width: 0,
       flexShrink: 0,
     },
   },
@@ -158,8 +168,8 @@ export default function Main() {
             <List className={classes.list}>
               {menuItems.map((text, index) => (
                 <ListItem button key={text}>
-                  <MenuListItem className="list"
-                  href={menuRef[index]}>
+                  <MenuListItem onClick={handleDrawerClose} className="list"
+                    href={menuRef[index]}>
                     <ListItemText primary={text} />
                   </MenuListItem>
                 </ListItem>
@@ -173,6 +183,7 @@ export default function Main() {
       </Hidden>
 
       <Banner id="banner-top" img={banner} br>
+
         <h1 className="nomeSite">Missão Rama Brasil</h1>
 
       </ Banner>
@@ -180,19 +191,28 @@ export default function Main() {
 
       {/* -----------------------QUEM SOMOS NÓS---------------------- */}
 
-      <ContentOne id="QuemSomosNosC">
 
-        <div className="QuemSomosNos">
-          <h1>Quem somos nós</h1>
+      <QuemSomosNosContent id="QuemSomosNosC">
+
+        <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item xs={12}>
+            <h1>Quem somos nós</h1>
+          </Grid>
 
           <hr />
 
-          <div className="content">
-            <img src={logo} alt="logoImage" />
-            <p>Somos um grupo de pessoas que dedica suas vidas a realizar um Programa de Treinamento para que nos tornemos Cidadãos Cósmicos, aperfeiçoando-nos a cada dia, para conquistarmos a internalização da Ética Universal</p>
-          </div>
-        </div>
-      </ContentOne>
+          <Grid item xs={12} container spacing={0} justify="center" alignItems="center">
+            <Grid item xs={9} md={4} className="image" >
+              <img src={logo} alt="logoImage" />
+            </Grid>
+            <Grid item xs={9} md={4} className="text">
+              <p>Somos um grupo de pessoas que dedica suas vidas a realizar um Programa de Treinamento para que nos tornemos Cidadãos Cósmicos, aperfeiçoando-nos a cada dia, para conquistarmos a internalização da Ética Universal</p>
+            </Grid>
+          </Grid>
+
+        </Grid>
+
+      </QuemSomosNosContent>
 
       <Banner img={banner2} />
 
@@ -200,32 +220,34 @@ export default function Main() {
       {/* -----------------------NOSSA META---------------------- */}
 
 
-      <ContentTwo id="NossaMeta">
-        <div className="nossaMeta">
-          <h1>Nossa meta</h1>
+      <NossaMetaContent id="NossaMeta">
+        <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item xs={12}>
+            <h1>Nossa meta</h1>
+          </Grid>
+
           <hr />
-        </div>
 
-        <div className="quadros">
-
-          <div className="quadro">
+          <Grid item md={8} xs={11} className="content">
             <h2>Âmbito pessoal:</h2>
             <ul>
               <li>Conhecimento e o autoconhecimento como meios de alquimiar as barreiras ( o que nos tem impedido de amar) que impedem a evolução rumo à conquista da consciência positiva; </li>
               <li>Desenvolvimento de habilidades para o viver em harmonia.</li>
             </ul>
-          </div>
+          </Grid>
 
-          <h3>Objetivos a serem alcançados pelo grupo:</h3>
+          <Grid item md={8} xs={11} className="content">
+            <h3>Objetivos a serem alcançados pelo grupo:</h3>
+          </Grid>
 
-          <div className="quadro">
+          <Grid item md={8} xs={11} className="content">
             <h2>Geral:</h2>
             <ul>
               <li>Estabelecimento de uma comunidade compromissada com as regras da vida e com a promoção do bem comum, tendo o respeito e o amor como metas coletivas. A partir desta conquista, desenvolver habilidades para viver em harmonia.</li>
             </ul>
-          </div>
+          </Grid>
 
-          <div className="quadro">
+          <Grid item md={8} xs={11} className="content">
             <h2>Específicos:</h2>
             <ul>
               <li>Servir de referencial ao meio, tanto de forma grupal, quanto individual;</li>
@@ -237,12 +259,11 @@ export default function Main() {
               <li>Abrir a possibilidade para uma presença extra-terrestre mais efetiva dentro do grupo, quando necessário.</li>
             </ul>
             <p>(Instruções passados por Charlie Wells em palestra no Projeto Amar em 1996)</p>
-          </div>
+          </Grid>
 
-        </div>
+        </Grid>
 
-      </ContentTwo>
-
+      </NossaMetaContent>
 
       <Banner img={banner3} />
 
@@ -250,59 +271,56 @@ export default function Main() {
       {/* -----------------------COMO PARTICIPAR---------------------- */}
 
 
-      <ContentTwo id="ComoParticipar">
-
-        <div className="nossaMeta">
-
-          <h1>Como participar</h1>
+      <ComoParticiparContent id="ComoParticipar">
+        <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item xs={12}>
+            <h1>Como participar</h1>
+          </Grid>
 
           <hr />
 
-          <div id="imagemETexto">
+          <Grid item container spacing={3} xs={11} alignItems="center" justify="center">
+            <Grid item md={5} xs={11} className="image">
+              <img src={comoParticiparFoto} alt="ComoParticiparFoto" />
+            </Grid>
 
-            <img src={comoParticiparFoto} alt="ComoParticiparFoto" />
+            <Grid item md={7} xs={12} className="text">
+              <ul>
+                <li>Inicialmente, faz-se necessário ler o livro: "Os Semeadores de Vida" de C.R.P.Wells.</li>
+                <li>Esse livro contêm um importante histórico de nosso trabalho que se iniciou através do contato dos Seres Extra-terrestres com a família deste autor, e que,depois, se diversificou pelo mundo com grupos utilizando metodologias de trabalho diferentes, mas com o mesmo objetivo. Através desta leitura, você poderá ou não se identificar com o objetivo a ser alcançado. Por este motivo, a leitura se torna fundamental!</li>
+                <li>O segundo passo é escrever um e-mail para a coordenação falando se seu interesse, através do endereço contato@missaorama.com.br ou envie mensagem para o WhatsApp 31.98882.9997. Receberá todas as instruções e será direcionado para um grupo de trabalho em sua cidade.</li>
+                <li>Seja muito bem-vindo(a)!</li>
+                <li>Coordenação Missão Rama Brasil</li>
+              </ul>
+            </Grid>
 
-            <div className="texto">
+          </Grid>
 
-              <div className="quadros">
-                <div className="quadro quadroParticipar">
-                  <ul>
-                    <li>Inicialmente, faz-se necessário ler o livro: "Os Semeadores de Vida" de C.R.P.Wells.</li>
-                    <li>Esse livro contêm um importante histórico de nosso trabalho que se iniciou através do contato dos Seres Extra-terrestres com a família deste autor, e que,depois, se diversificou pelo mundo com grupos utilizando metodologias de trabalho diferentes, mas com o mesmo objetivo. Através desta leitura, você poderá ou não se identificar com o objetivo a ser alcançado. Por este motivo, a leitura se torna fundamental!</li>
-                    <li>O segundo passo é escrever um e-mail para a coordenação falando se seu interesse, através do endereço contato@missaorama.com.br ou envie mensagem para o WhatsApp 31.98882.9997. Receberá todas as instruções e será direcionado para um grupo de trabalho em sua cidade.</li>
-                    <li>Seja muito bem-vindo(a)!</li>
-                    <li>Coordenação Missão Rama Brasil</li>
-                  </ul>
-                </div>
-              </div>
+          <hr />
 
-            </div>
-
-          </div>
-
-        </div>
-
-      </ContentTwo>
-
+        </Grid>
+      </ComoParticiparContent>
 
       <Banner img={banner4} />
 
 
       {/* -----------------------GALERIA DE ATIVIDADES---------------------- */}
 
-
-      <ContentThree id="GaleriaDeAtividades">
-
-        <div className="galeriaAtividades">
-
-          <h1>Galeria de atividades</h1>
+      <GaleriaAtividadesContent id="GaleriaDeAtividades">
+      <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item xs={12}>
+            <h1>Galeria de atividades</h1>
+          </Grid>
 
           <hr />
 
-          <Gallery />
+          <Grid item xs={12} className="caruosel">
+            <Gallery />
+          </Grid>
 
-        </div>
-      </ContentThree>
+      </Grid>
+
+      </GaleriaAtividadesContent>
 
 
       {/* -----------------------CONTATO---------------------- */}
