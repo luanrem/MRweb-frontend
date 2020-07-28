@@ -17,16 +17,17 @@ import Grid from '@material-ui/core/Grid';
 
 import Gallery from '../../components/carousel/carousel';
 
-import { Header,
-          Menus,
-          MenuListItem,
-          Banner,
-          QuemSomosNosContent,
-          NossaMetaContent,
-          ComoParticiparContent,
-          GaleriaAtividadesContent,
-          Footer
-        } from './styles';
+import {
+  Header,
+  Menus,
+  MenuListItem,
+  Banner,
+  QuemSomosNosContent,
+  NossaMetaContent,
+  ComoParticiparContent,
+  GaleriaAtividadesContent,
+  Footer
+} from './styles';
 
 import { RiHome2Line } from 'react-icons/ri';
 import { FaFacebookSquare, FaYoutube, FaInstagram } from 'react-icons/fa';
@@ -165,10 +166,24 @@ export default function Main() {
 
             <Divider />
 
+            <Link to="/register">
+              <Button className="Cadastrar">
+                Cadastrar
+              </Button>
+            </Link>
+
+            <Link to="/login">
+              <Button variant="outlined" color="inherit" className={classes.button}>
+                Entrar
+              </Button>
+            </Link>
+
+            <Divider />
+
             <List className={classes.list}>
               {menuItems.map((text, index) => (
-                <ListItem button key={text}>
-                  <MenuListItem onClick={handleDrawerClose} className="list"
+                <ListItem onClick={handleDrawerClose} button key={text}>
+                  <MenuListItem className="list"
                     href={menuRef[index]}>
                     <ListItemText primary={text} />
                   </MenuListItem>
@@ -307,7 +322,7 @@ export default function Main() {
       {/* -----------------------GALERIA DE ATIVIDADES---------------------- */}
 
       <GaleriaAtividadesContent id="GaleriaDeAtividades">
-      <Grid container spacing={2} direction="column" alignItems="center">
+        <Grid container spacing={2} direction="column" alignItems="center">
           <Grid item xs={12}>
             <h1>Galeria de atividades</h1>
           </Grid>
@@ -318,7 +333,7 @@ export default function Main() {
             <Gallery />
           </Grid>
 
-      </Grid>
+        </Grid>
 
       </GaleriaAtividadesContent>
 
