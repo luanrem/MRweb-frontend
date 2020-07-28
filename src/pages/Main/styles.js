@@ -10,6 +10,7 @@ export const Header = styled.header`
     bottom: 0;
     right: 0;
     height: 50px;
+    max-width: 2000px;
     z-index: 1;
 
     margin: 0 auto;
@@ -21,10 +22,12 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-content: center;
   max-width: 2000;
+  height: 100%;
 
     .home {
-      padding-left: 20px;
+      padding: 0 20px;
 
       a {
         text-decoration: none;
@@ -32,10 +35,16 @@ export const Header = styled.header`
       }
     }
 
+    .smallIcon {
+      padding: 0 50px;
+    }
+
+
     Button {
       color: ${props => props.headerBackground === true ? "black" : "white"};
       margin-right: 20px;
       margin-left: 0;
+      text-decoration: inherit;
     }
     .Cadastrar{
       margin-right: 10px;
@@ -88,7 +97,7 @@ export const Banner = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
-  width: 100%;
+  width: 100vw;
   max-width: 2000px;
   margin: 0px auto;
   /*border-radius: ${props => props.br ? `0 0 0 80% / 25%` : `0`};*/
@@ -155,79 +164,20 @@ export const Banner = styled.div`
     }
   }
 
-`;
+  @media (max-width: 960px) {
+    .nomeSite {
+      font-size: 60px;
+      text-align: -webkit-center;
+  }
 
-export const ContentOne = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 2000px;
-
-
-  .QuemSomosNos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-    h1 {
-      font-size: 30px;
-      padding-top: 40px;
-    }
-
-    hr {
-      display: block;
-      height: 4px;
-      border-width: 0;
-      color: #eee;
-      background-color: rgba(199,199,199,1);
-      width: 650px;
-
-      max-width: 50px;
-      margin-top: 25px;
-      margin-bottom: 20px;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      width: 900px;
-      padding: 20px 15px 50px;
-
-      p {
-        width: 400px;
-        margin-left: 50px;
-        font-size: 20px;
-        line-height: 1.5;
-        color: #696969;
       }
 
-      img {
-        width: 300px;
-      }
-    }
-  }
+
 `;
 
-export const ContentTwo = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 2000px;
-
-  padding: 50px 20px;
-
-  .nossaMeta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-    h1 {
-      font-size: 30px;
-      padding-top: 40px;
-    }
-  }
+export const QuemSomosNosContent = styled.div`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 50px 0;
 
   hr {
       display: block;
@@ -242,13 +192,60 @@ export const ContentTwo = styled.div`
       margin-bottom: 20px;
     }
 
-  .quadros {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    h1 {
+      font-size: 30px;
+    }
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    img {
+    max-width: 300px;
+    height: auto;
+    }
+
+    .image {
+      text-align: center;
+    }
+
+
+    p {
+        max-width: 400px;
+        font-size: 20px;
+        line-height: 1.5;
+        color: #696969;
+      }
+      @media (max-width: 960px) {
+        .text {
+          padding-top: 30px;
+          text-align: -webkit-center;
+        }
+        img {
+          max-width: 200px;
+        }
+
+      }
+
+`;
+
+export const NossaMetaContent = styled.div`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 50px 0;
+
+  hr {
+      display: block;
+      height: 4px;
+      border-width: 0;
+      color: #eee;
+      background-color: rgba(199,199,199,1);
+      width: 650px;
+
+      max-width: 50px;
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 23px;
+        line-height: 1.5;
+      }
 
     h3 {
       font-size: 23px;
@@ -256,68 +253,27 @@ export const ContentTwo = styled.div`
       padding-top: 25px;
     }
 
-    .quadro {
-
-      ul {
+    ul {
         list-style-type: none;
-      }
       li {
-          width: 800px;
+          max-width: 800px;
           margin-left: 15px;
           font-size: 20px;
           line-height: 1.5;
           color: #696969;
       }
-
-      h2 {
-        font-size: 23px;
-        line-height: 1.5;
-
-        padding-top: 10px;
-      }
-    }
-  }
-
-
-    #imagemETexto {
-      display: flex;
-      align-items: center;
-
-
-      img {
-        width: auto;
-        height: 450px;
-        margin-right: 20px;
-        border-radius: 10px;
-      }
-
-      .quadroParticipar li{
-        width: 500px;
-      }
     }
 
-
+      @media (max-width: 960px) {
+        h2 {
+          text-align: -webkit-center;
+        }
+      }
 `;
 
-export const ContentThree = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  height: 700px;
-  max-width: 2000px;
-
-  padding: 50px 20px;
-
-  .galeriaAtividades {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-    h1 {
-      font-size: 30px;
-      padding-top: 40px;
-    }
-  }
+export const ComoParticiparContent = styled.div`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 50px 0;
 
   hr {
       display: block;
@@ -331,7 +287,56 @@ export const ContentThree = styled.div`
       margin-top: 25px;
       margin-bottom: 20px;
     }
-`
+
+    .image {
+      text-align: center;
+    }
+
+  img {
+        max-height: 300px;
+        max-width: 100%;
+        margin-right: 20px;
+        border-radius: 10px;
+      }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      max-width: 100%;
+      margin-left: 15px;
+      font-size: 20px;
+      line-height: 1.5;
+      color: #696969;
+    }
+  }
+
+  @media (max-width: 960px) {
+        .text {
+          padding-top: 30px;
+          text-align: -webkit-center;
+        }
+
+      }
+`;
+
+export const GaleriaAtividadesContent = styled.div`
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 50px 0;
+
+  hr {
+      display: block;
+      height: 4px;
+      border-width: 0;
+      color: #eee;
+      background-color: rgba(199,199,199,1);
+      width: 650px;
+
+      max-width: 50px;
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+`;
 
 export const Footer = styled.div`
   margin: 0 auto;
@@ -355,3 +360,9 @@ export const Footer = styled.div`
       }
   }
 `
+
+export const MenuListItem = styled.a`
+    text-decoration: none;
+    color: inherit;
+    padding: 0 25px;
+`;
