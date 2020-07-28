@@ -82,24 +82,26 @@ export default function SignIn() {
           >
             Entrar
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Esqueceu a senha?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/register" variant="body2">
-                {"Ainda não tem conta? Cadastre-se"}
-              </Link>
-            </Grid>
-          </Grid>
           <Grid container spacing={4} direction="column">
-            <Grid item />
-            <Grid item >
-              <Link href="/" variant="body2">
-                {"Página inicial"}
+            <Grid item container direction="space-between">
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Esqueceu a senha?
               </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/register" variant="body2">
+                  {"Ainda não tem conta? Cadastre-se"}
+                </Link>
+              </Grid>
+            </Grid>
+            <Grid item container>
+              <Grid item />
+              <Grid item >
+                <Link href="/" variant="body2">
+                  {"Página inicial"}
+                </Link>
+              </Grid>
             </Grid>
           </Grid>
         </form>
