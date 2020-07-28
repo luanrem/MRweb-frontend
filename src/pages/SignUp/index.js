@@ -12,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import { Content } from './styles';
+
+import { Form, Input } from '@rocketseat/unform';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,94 +39,63 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  function handleSubmit(data) {
+    console.tron.log(data);
+    console.log(data);
+  }
+
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Cadastrar
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="Nome completo"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Apelido"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Senha"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="Ex participante?"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+    <Content>
+
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
             Cadastrar
-          </Button>
-          <Grid container justify="space-between">
-            <Grid item >
-              <Link href="/" variant="body2">
-                {"Página inicial"}
-              </Link>
+              </Typography>
+          <Form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12}>
+                <Input name="name" type="name" placeholder="Nome" />
+                <Input name="nickname" type="name" placeholder="Apelido" />
+                <Input name="email" type="email" placeholder="E-mail" />
+                <Input name="password" type="password" placeholder="Senha" />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="Ex participante?"
+                />
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href="/login" variant="body2">
-                Já possui uma conta? Entrar
-              </Link>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Cadastrar
+            </Button>
+            <Grid container justify="space-between">
+              <Grid item >
+                <Link href="/" variant="body2">
+                  {"Página inicial"}
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  Já possui uma conta? Entrar
+                    </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+          </Form>
+        </div>
+      </Container>
+
+    </Content>
   );
 }
