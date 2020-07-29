@@ -16,19 +16,20 @@ export default function Sidebar(props) {
   const { open, routes } = props;
 
   var links = (
-    <List>
+    <List className="list">
       {routes.map((prop, key) => {
 
         return (
           <NavLink
             to={prop.layout + prop.path}
+            className="item"
             key={key}
           >
-            <ListItem button>
+            <ListItem button className="itemLink listItemClasses">
               <ListItemIcon>
-                <prop.icon />
+                <prop.icon className="itemIcon" />
               </ListItemIcon>
-              <ListItemText primary={prop.name} />
+              <ListItemText className="itemText" primary={prop.name} />
             </ListItem>
           </NavLink>
         )
@@ -44,9 +45,13 @@ export default function Sidebar(props) {
   return (
     <Container>
       {/*Hidden for phone user*/}
-      <Hidden mdUp>
+
+      <nav>
+
+      <Hidden mdUp className="Hidden" implementation="css">
         <Drawer
           anchor="right"
+          className="drawerPaper"
           variant="temporary"
           open={open}
         >
@@ -60,11 +65,11 @@ export default function Sidebar(props) {
       </Hidden>
 
       {/*Hidden for desktop user*/}
-      <Hidden smDown>
+      <Hidden smDown className="Hidden" implementation="css">
         <Drawer
+          className="drawerPaper"
           anchor="left"
           variant="permanent"
-          open
         >
           {brand}
           {links}
@@ -74,6 +79,7 @@ export default function Sidebar(props) {
           ) : null}
         </Drawer>
       </Hidden>
+      </nav>
     </Container>
   );
 }

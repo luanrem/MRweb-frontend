@@ -1,6 +1,24 @@
 import styled from 'styled-components';
 
+import { drawerWidth } from '../config/stylesconfig.js';
+
 export const Container = styled.div`
+flex-shrink: 0;
+
+  .drawerPaper {
+    border: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 600px;
+  }
+
+  .Hidden {
+    width: 300px;
+  }
+
 
 `;
 
