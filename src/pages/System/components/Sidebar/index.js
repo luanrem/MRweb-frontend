@@ -7,6 +7,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import IconButton from "@material-ui/core/IconButton";
+import Divider from "@material-ui/core/Divider";
+
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { Container, BackgroundSideImage } from './styles';
 import image from '../../../../assets/pictures/universe-banner2.jpg';
@@ -14,6 +18,7 @@ import image from '../../../../assets/pictures/universe-banner2.jpg';
 
 export default function Sidebar(props) {
   const { open, routes } = props;
+
 
   var links = (
     <List className="list">
@@ -25,7 +30,7 @@ export default function Sidebar(props) {
             className="item"
             key={key}
           >
-            <ListItem button className="itemLink listItemClasses">
+            <ListItem onClick={props.handleDrawerToggle} button className="itemLink listItemClasses">
               <ListItemIcon>
                 <prop.icon className="itemIcon" />
               </ListItemIcon>
@@ -48,37 +53,42 @@ export default function Sidebar(props) {
 
       <nav>
 
-      <Hidden mdUp className="Hidden" implementation="css">
-        <Drawer
-          anchor="right"
-          className="drawerPaper"
-          variant="temporary"
-          open={open}
-        >
-          {brand}
-          {links}
-          {image !== undefined ? (
-            <BackgroundSideImage img={image}
-            />
-          ) : null}
-        </Drawer>
-      </Hidden>
+        <Hidden mdUp className="Hidden" implementation="css">
+          <Drawer
+            anchor="right"
+            className="drawerPaper"
+            variant="temporary"
+            onClose={props.handleDrawerToggle}
+            open={open}
+          >
+            <IconButton >
+              <ChevronRightIcon />
+            </IconButton>
 
-      {/*Hidden for desktop user*/}
-      <Hidden smDown className="Hidden" implementation="css">
-        <Drawer
-          className="drawerPaper"
-          anchor="left"
-          variant="permanent"
-        >
-          {brand}
-          {links}
-          {image !== undefined ? (
-            <BackgroundSideImage img={image}
-            />
-          ) : null}
-        </Drawer>
-      </Hidden>
+            <Divider />
+            {links}
+            {image !== undefined ? (
+              <BackgroundSideImage img={image}
+              />
+            ) : null}
+          </Drawer>
+        </Hidden>
+
+        {/*Hidden for desktop user*/}
+        <Hidden smDown className="Hidden" implementation="css">
+          <Drawer
+            className="drawerPaper"
+            anchor="left"
+            variant="permanent"
+          >
+            {brand}
+            {links}
+            {image !== undefined ? (
+              <BackgroundSideImage img={image}
+              />
+            ) : null}
+          </Drawer>
+        </Hidden>
       </nav>
     </Container>
   );
