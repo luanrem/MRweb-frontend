@@ -10,16 +10,19 @@ export default function RouteWrapper({
   isPrivate = false, // This property say what component neet to be loged-in
   ...rest
 }) {
-  const signed = false;
+  const signed = true;
+  const dev = true;
 
-  // If the user is not signed and the route is private, redirect to main page
-  if (!signed && isPrivate) {
-    return <Redirect to="/" />
-  }
+  if(!dev) {
+      // If the user is not signed and the route is private, redirect to main page
+      if (!signed && isPrivate) {
+        return <Redirect to="/" />
+      }
 
-  // If the user is signed and the route is not private, redirect to system route
-  if (signed && !isPrivate) {
-    return <Redirect to="/system" />
+      // If the user is signed and the route is not private, redirect to system route
+      if (signed && !isPrivate) {
+        return <Redirect to="/system" />
+      }
   }
 
   // If the user is signed and the route is private, than return:
