@@ -40,7 +40,7 @@ export const SideBarStyle = styled.div`
 
   .brand {
     width: ${drawerWidth};
-    height: 40px;
+    height: 65px;
 
     display: flex;
     justify-content: center;
@@ -61,6 +61,12 @@ export const SideBarStyle = styled.div`
       font-size: 20px;
       color: white;
     }
+  }
+
+  .divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.75), white);
   }
 
   .list {
