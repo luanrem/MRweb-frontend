@@ -4,6 +4,7 @@ import Goodtimes from '../../../../assets/fonts/goodtimesrg.ttf'
 
 import { drawerWidth } from '../config/stylesconfig.js';
 
+
 export const Container = styled.div`
 
 
@@ -77,7 +78,7 @@ export const Container = styled.div`
 
 export const BackgroundSideImage = styled.div`
 
-  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${props => props.img});
+  background-image: radial-gradient(circle, transparent 24%, rgba(0,0,0,0.9) 70%), url(${props => props.img});
 
   position: absolute;
   z-index: -1;
@@ -90,4 +91,5 @@ export const BackgroundSideImage = styled.div`
   background-position: center center;
 
 `;
+
 
