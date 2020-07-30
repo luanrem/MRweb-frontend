@@ -7,17 +7,15 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import IconButton from "@material-ui/core/IconButton";
 import Divider from "@material-ui/core/Divider";
 
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { Container, BackgroundSideImage } from './styles';
-import image from '../../../../assets/pictures/universe-banner2.jpg';
+import image from '../../../../assets/pictures/universe-banner5.jpg';
 
 
 export default function Sidebar(props) {
-  const { open, routes } = props;
+  const { open, routes, handleDrawerToggle } = props;
 
 
   var links = (
@@ -26,11 +24,11 @@ export default function Sidebar(props) {
 
         return (
           <NavLink
-            to={prop.layout + prop.path}
-            className="item"
-            key={key}
+          to={prop.layout + prop.path}
+          className="navLink"
+          key={key}
           >
-            <ListItem onClick={props.handleDrawerToggle} button className="itemLink listItemClasses">
+            <ListItem onClick={open ? handleDrawerToggle : null} button className="listItem">
               <ListItemIcon>
                 <prop.icon className="itemIcon" />
               </ListItemIcon>
@@ -43,28 +41,23 @@ export default function Sidebar(props) {
   )
 
   var brand = (
-    <div>
-      <a href="/system"><p>Logo</p></a>
+    <div className="brand">
+      <a href="/system"><p>Missão Rama</p></a>
     </div>
   );
+
   return (
     <Container>
       {/*Hidden for phone user*/}
-
-      <nav>
-
-        <Hidden mdUp className="Hidden" implementation="css">
+        <Hidden mdUp className="HiddenPhone" implementation="css">
           <Drawer
-            anchor="right"
             className="drawerPaper"
+            anchor="right"
             variant="temporary"
             onClose={props.handleDrawerToggle}
             open={open}
           >
-            <IconButton >
-              <ChevronRightIcon />
-            </IconButton>
-
+            {brand}
             <Divider />
             {links}
             {image !== undefined ? (
@@ -82,6 +75,9 @@ export default function Sidebar(props) {
             variant="permanent"
           >
             {brand}
+
+            <Divider />
+
             {links}
             {image !== undefined ? (
               <BackgroundSideImage img={image}
@@ -89,7 +85,6 @@ export default function Sidebar(props) {
             ) : null}
           </Drawer>
         </Hidden>
-      </nav>
     </Container>
   );
 }

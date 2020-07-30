@@ -38,7 +38,7 @@ const systemRoutes = [
   {
     path: "/relatos",
     name: "Relatos",
-    icon: "content_paste",
+    icon: Unarchive,
     component: Relatos,
     layout: "/system"
   },

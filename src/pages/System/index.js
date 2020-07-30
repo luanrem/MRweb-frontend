@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
-
-import Grid from '@material-ui/core/Grid';
 
 import image from '../../assets/pictures/universe-banner2.jpg';
 

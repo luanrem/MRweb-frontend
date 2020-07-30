@@ -13,4 +13,10 @@ export const Container = styled.div`
     width: calc(100vw - ${drawerWidth});
   }
 
+  @media (max-width: 960px) {
+    .appbar {
+      width: 100vw;
+    }
+  }
+
   `;

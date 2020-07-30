@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+import Goodtimes from '../../../../assets/fonts/goodtimesrg.ttf'
+
 import { drawerWidth } from '../config/stylesconfig.js';
 
 export const Container = styled.div`
-flex-shrink: 0;
+
 
   .drawerPaper {
     border: none;
@@ -18,6 +20,57 @@ flex-shrink: 0;
   .Hidden {
     width: 300px;
   }
+
+  .HiddenPhone {
+    width: 300px;
+  }
+
+  .brand {
+    width: ${drawerWidth};
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    @font-face {
+      font-family: 'MRFont';
+      src: url(${Goodtimes});
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    p {
+      font-family: MRFont;
+      font-size: 20px;
+      color: white;
+    }
+  }
+
+  .list {
+
+    .navLink {
+      text-decoration: none;
+    }
+
+    .listItem {
+      padding-left: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .itemIcon {
+        color: white;
+      }
+      .itemText {
+        color: white;
+      }
+    }
+  }
+
 
 
 `;
