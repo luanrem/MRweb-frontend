@@ -10,7 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Divider from "@material-ui/core/Divider";
 
 
-import { Container, BackgroundSideImage } from './styles';
+import { Container, BackgroundSideImage, SideBarStyle } from './styles';
 import image from '../../../../assets/pictures/universe-banner5.jpg';
 
 
@@ -49,42 +49,52 @@ export default function Sidebar(props) {
   return (
     <Container>
       {/*Hidden for phone user*/}
-        <Hidden mdUp className="HiddenPhone" implementation="css">
+        <Hidden mdUp className="Hidden">
+          <div>
+
           <Drawer
+            variant="temporary"
             className="drawerPaper"
             anchor="right"
-            variant="temporary"
             onClose={props.handleDrawerToggle}
             open={open}
           >
-            {brand}
-            <Divider />
-            {links}
+
+            <SideBarStyle>
+              {brand}
+              <Divider />
+              {links}
+            </SideBarStyle>
+
             {image !== undefined ? (
               <BackgroundSideImage img={image}
               />
             ) : null}
           </Drawer>
+          </div>
         </Hidden>
 
         {/*Hidden for desktop user*/}
-        <Hidden smDown className="Hidden" implementation="css">
+        <Hidden smDown className="Hidden">
           <Drawer
             className="drawerPaper"
             anchor="left"
             variant="permanent"
           >
-            {brand}
 
-            <Divider />
+            <SideBarStyle>
+              {brand}
+              <Divider />
+              {links}
+            </SideBarStyle>
 
-            {links}
             {image !== undefined ? (
               <BackgroundSideImage img={image}
               />
             ) : null}
           </Drawer>
         </Hidden>
+
     </Container>
   );
 }
